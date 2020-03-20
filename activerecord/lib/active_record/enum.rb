@@ -218,6 +218,8 @@ module ActiveRecord
           end
         end
         enum_values.freeze
+      
+        singleton_class.define_method("#{name}_from_integer") { |integer| enum_values.key(integer) }
       end
     end
 

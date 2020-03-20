@@ -609,4 +609,11 @@ class EnumTest < ActiveRecord::TestCase
   ensure
     ActiveRecord::Base.logger = old_logger
   end
+
+  test "enum key from integer" do
+    assert_equal Book.status_from_integer(0), "proposed"
+    assert_equal Book.read_status_from_integer(0), "unread"
+    assert_equal Book.language_from_integer(0), "english"
+    assert_equal Book.font_size_from_integer(0), "small"
+  end
 end
